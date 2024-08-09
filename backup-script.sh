@@ -25,7 +25,7 @@ BACKUP_FILE="redis_backup_${TIMESTAMP}.rdb"
 echo "Starting Redis backup process..."
 
 # Create Redis backup
-echo "Creating Redis dump..."
+echo "Creating Redis dump... HOST: ${REDIS_HOST} PORT: ${REDIS_PORT}"
 redis-cli -h $REDIS_HOST -p $REDIS_PORT --rdb "${BACKUP_DIR}/${BACKUP_FILE}"
 
 # Compress the backup file
