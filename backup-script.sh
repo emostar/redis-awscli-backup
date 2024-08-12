@@ -16,6 +16,7 @@ fi
 
 # Optional redis connection details
 REDIS_PORT=${REDIS_PORT:-6379}
+REDIS_PASSWORD=${REDIS_PASSWORD:-""}
 
 # Backup file details
 BACKUP_DIR="/tmp"
@@ -26,7 +27,7 @@ echo "Starting Redis backup process..."
 
 # Create Redis backup
 echo "Creating Redis dump... HOST: ${REDIS_HOST} PORT: ${REDIS_PORT}"
-redis-cli -h $REDIS_HOST -p $REDIS_PORT --rdb "${BACKUP_DIR}/${BACKUP_FILE}"
+redis-cli -h $REDIS_HOST -p $REDIS_PORT -a $REDIS_PASSWORD --rdb "${BACKUP_DIR}/${BACKUP_FILE}"
 
 # Compress the backup file
 echo "Compressing backup file..."
